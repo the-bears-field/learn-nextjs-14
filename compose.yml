@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     tty: true
     command: yarn start
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     volumes:
       - .:/usr/src/app
     ports:
