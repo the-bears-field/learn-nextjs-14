@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     tty: true
-    command: yarn start
+    command: yarn dev
     environment:
       - CHOKIDAR_USEPOLLING=true
     volumes:
