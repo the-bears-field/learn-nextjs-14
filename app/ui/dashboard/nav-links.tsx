@@ -1,9 +1,12 @@
+'use client';
+
 import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // サイドナビゲーションに表示するリンクのマップ。
 // アプリケーションの規模に応じて、データベースに保存される可能性があります。
@@ -18,6 +21,8 @@ const links = [
 ];
 
 export default function NavLinks() {
+  const pathname: string = usePathname();
+
   return (
     <>
       {links.map((link) => {
