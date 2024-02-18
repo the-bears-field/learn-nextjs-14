@@ -1,7 +1,7 @@
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import { Revenue } from '@/app/lib/definitions';
+import { fetchRevenue } from '@/app/lib/data';
 
 // このコンポーネントは、あくまで代表的なものです。
 // データの可視化UIについては、以下をご覧ください:
@@ -9,11 +9,9 @@ import { Revenue } from '@/app/lib/definitions';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
+export default async function RevenueChart() {
+  const revenue = await fetchRevenue();
+
   const chartHeight = 350;
   // 注: このコードに到達した際には、このポイントでコメントを追加してください。
 
