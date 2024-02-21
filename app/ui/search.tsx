@@ -7,13 +7,14 @@ import {
   useSearchParams,
   useRouter,
 } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams: ReadonlyURLSearchParams = useSearchParams();
   const pathname: string = usePathname();
   const router = useRouter();
 
-  function handleSearch(term: string) {
+  const handleSearch = useDebouncedCallback((term: string) => {
     const params: URLSearchParams = new URLSearchParams(searchParams);
 
     if (term) {
@@ -22,7 +23,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       params.delete('query');
     }
     router.replace(`${pathname}?${params.toString()}`);
-  }
+  }, 300);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
