@@ -12,7 +12,7 @@ export type State = {
     amount?: string[];
     status?: string[];
   };
-  messages?: string | null;
+  message?: string | null;
 };
 
 const FormSchema = z.object({
